@@ -1,15 +1,17 @@
-# Contribution [#]: [Issue Title]
+# Contribution 1: show a message if firebase fails to connect
 
-**Contribution Number:** [1 / 2 / 3]  
-**Student:** [Your Name]  
-**Issue:** [GitHub issue link]  
-**Status:** [Phase I / Phase II / Phase III / Phase IV] [In Progress / Complete]
+**Contribution Number:** 1
+**Student:** Alston Dsouza
+**Issue:** https://github.com/cpinitiative/usaco-guide/issues/3573
+**Status:** Phase I Complete
 
 ---
 
 ## Why I Chose This Issue
 
-[1-2 paragraphs explaining why this issue interests you, how it matches your skills/learning goals, what you hope to learn]
+I chose issue #3573, "show a message if firebase fails to connect," because it matches my experience with JavaScript, React, Next.js, and frontend development. The USACO Guide project uses React, Next.js, TypeScript, Tailwind CSS, and Firebase, which are technologies closely related to the web development projects I have worked on.
+
+This issue is labeled as a good first issue and appears to have a clear and manageable scope for my first open source contribution. From reading the issue discussion, I understand that some users may experience Firebase connection issues and may need clearer guidance about enabling long polling. I hope to learn more about how a large open source project handles user-facing messages, settings pages, and Firebase-related functionality.
 
 ---
 
@@ -17,19 +19,19 @@
 
 ### Problem Description
 
-[In your own words, what's broken or missing?]
+Some users may experience Firebase connection issues while using the USACO Guide website. The issue suggests adding a clearer message to help users understand that enabling long polling may help resolve certain Firebase connection problems.
 
 ### Expected Behavior
 
-[What should happen?]
+Users should receive clear guidance when Firebase connection issues occur and understand when the long polling setting may help solve the problem.
 
 ### Current Behavior
 
-[What actually happens?]
+The discussion indicates that existing messaging may not be clear enough for users experiencing Firebase connection issues. Although previous work was completed related to long polling, the issue remains open and requires further investigation.
 
 ### Affected Components
 
-[Which parts of the codebase are involved?]
+Likely the settings page, long polling option, and Firebase-related functionality. The exact files and components will be identified during Phase II.
 
 ---
 
@@ -37,19 +39,19 @@
 
 ### Environment Setup
 
-[Notes on setting up your local development environment - challenges you faced, how you solved them]
+To be completed during Phase II.
 
 ### Steps to Reproduce
 
-1. [Step 1]
-2. [Step 2]
-3. [Observed result]
+1. Set up the USACO Guide project locally.
+2. Review the Firebase connection behavior.
+3. Investigate the settings page and long polling functionality.
 
 ### Reproduction Evidence
 
-- **Commit showing reproduction:** [Link to commit in your fork]
-- **Screenshots/logs:** [If applicable]
-- **My findings:** [What you discovered during reproduction]
+* **Commit showing reproduction:** TBD
+* **Screenshots/logs:** TBD
+* **My findings:** TBD
 
 ---
 
@@ -57,30 +59,32 @@
 
 ### Analysis
 
-[Your analysis of the root cause - what's causing the issue?]
+To be completed during Phase II after reproducing the issue and reviewing the existing implementation.
 
 ### Proposed Solution
 
-[High-level description of your fix approach]
+To be determined after understanding the current Firebase connection handling and settings page implementation.
 
 ### Implementation Plan
 
 Using UMPIRE framework (adapted):
 
-**Understand:** [Restate the problem]
+**Understand:** Review the issue discussion and understand the Firebase connection problem.
 
-**Match:** [What similar patterns/solutions exist in the codebase?]
+**Match:** Identify similar messaging patterns already used in the codebase.
 
-**Plan:** [Step-by-step implementation plan]
-1. [Modify file X to do Y]
-2. [Add function Z]
-3. [Update tests]
+**Plan:**
 
-**Implement:** [Link to your branch/commits as you work]
+1. Identify the relevant settings page files.
+2. Review the current long polling message.
+3. Investigate Firebase connection handling.
+4. Determine what additional messaging is needed.
 
-**Review:** [Self-review checklist - does it follow the project's contribution guidelines?]
+**Implement:** TBD
 
-**Evaluate:** [How will you verify it works?]
+**Review:** Ensure changes follow project contribution guidelines and coding standards.
+
+**Evaluate:** Verify that users receive clearer guidance regarding Firebase connection issues.
 
 ---
 
@@ -88,50 +92,46 @@ Using UMPIRE framework (adapted):
 
 ### Unit Tests
 
-- [ ] Test case 1: [Description]
-- [ ] Test case 2: [Description]
-- [ ] Test case 3: [Description]
+* [ ] TBD
+* [ ] TBD
+* [ ] TBD
 
 ### Integration Tests
 
-- [ ] Integration scenario 1
-- [ ] Integration scenario 2
+* [ ] TBD
+* [ ] TBD
 
 ### Manual Testing
 
-[What you tested manually and results]
+To be completed after implementation.
 
 ---
 
 ## Implementation Notes
 
-### Week [X] Progress
+### Week 1 Progress
 
-[What you built this week, challenges faced, decisions made]
-
-### Week [Y] Progress
-
-[Continue documenting as you work]
+Completed Phase I setup activities. Created the Contribution README repository, selected issue #3573, reviewed the issue discussion, and chose the issue because it aligns with my web development experience and learning goals.
 
 ### Code Changes
 
-- **Files modified:** [List]
-- **Key commits:** [Links to important commits]
-- **Approach decisions:** [Why you chose certain approaches]
+* **Files modified:** None yet
+* **Key commits:** None yet
+* **Approach decisions:** Chose a beginner-friendly frontend issue with a clear scope and active project.
 
 ---
 
 ## Pull Request
 
-**PR Link:** [GitHub PR URL when submitted]
+**PR Link:** TBD
 
-**PR Description:** [Draft or final PR description - much of the content above can be adapted]
+**PR Description:** TBD
 
 **Maintainer Feedback:**
-- [Date]: [Summary of feedback received]
-- [Date]: [How you addressed it]
 
-**Status:** [Awaiting review / Iterating / Approved / Merged]
+* TBD
+
+**Status:** Not started
 
 ---
 
@@ -139,20 +139,21 @@ Using UMPIRE framework (adapted):
 
 ### Technical Skills Gained
 
-[What you learned technically]
+Learned how to identify and evaluate an open source issue using the CodePath issue selection process.
 
 ### Challenges Overcome
 
-[What was hard and how you solved it]
+The biggest challenge was understanding the open source workflow and distinguishing between the First Contributions practice repository and the actual AI301 contribution project.
 
 ### What I'd Do Differently Next Time
 
-[Reflection on your process]
+I would spend more time reviewing candidate issues before selecting one so I can compare project complexity and scope more efficiently.
 
 ---
 
 ## Resources Used
 
-- [Link to helpful documentation]
-- [Tutorial or Stack Overflow post that helped]
-- [GitHub issues or discussions that helped]
+* https://github.com/cpinitiative/usaco-guide/issues/3573
+* https://github.com/cpinitiative/usaco-guide
+* CodePath AI301 Phase I Instructions
+* First Contributions Tutorial
