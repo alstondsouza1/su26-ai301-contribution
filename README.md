@@ -11,7 +11,7 @@
 
 I chose issue #3573, "show a message if firebase fails to connect," because it matches my experience with JavaScript, React, Next.js, and frontend development. The USACO Guide project uses React, Next.js, TypeScript, Tailwind CSS, and Firebase, which are technologies closely related to the web development projects I have worked on.
 
-This issue is labeled as a good first issue and appears to have a clear and manageable scope for my first open source contribution. From reading the issue discussion, I understand that some users may experience Firebase connection issues and may need clearer guidance about enabling long polling. I hope to learn more about how a large open source project handles user-facing messages, settings pages, and Firebase-related functionality.
+This issue was labeled as a good first issue and appeared to have a clear and manageable scope for my first open source contribution.
 
 ---
 
@@ -19,15 +19,15 @@ This issue is labeled as a good first issue and appears to have a clear and mana
 
 ### Problem Description
 
-Some users may experience Firebase connection issues while using the USACO Guide website. The issue suggests adding a clearer message to help users understand that enabling long polling may help resolve certain Firebase connection problems.
+The issue requested a message to help users understand that enabling long polling may help resolve Firebase connection problems.
 
 ### Expected Behavior
 
-Users should receive clear guidance when Firebase connection issues occur and understand when the long polling setting may help solve the problem.
+Users experiencing Firebase connection issues should receive clear guidance about enabling long polling.
 
 ### Current Behavior
 
-The issue discussion suggested that users needed a clearer message regarding Firebase connection issues and the long polling setting. However, after investigating the current codebase, I found that a message already exists on the settings page.
+After investigating the current codebase, I found that the requested message already exists on the settings page.
 
 ### Affected Components
 
@@ -42,7 +42,7 @@ The issue discussion suggested that users needed a clearer message regarding Fir
 
 ### Environment Setup
 
-I cloned my fork of the USACO Guide repository and installed the project dependencies using Yarn.
+I cloned my fork of the USACO Guide repository and installed dependencies using Yarn.
 
 Commands used:
 
@@ -53,13 +53,13 @@ yarn install
 yarn dev
 ```
 
-The setup completed successfully. Yarn displayed some peer dependency warnings, but the development server launched correctly and the website was accessible locally.
+The application started successfully and was accessible at `http://localhost:3000`.
 
 ### Steps to Reproduce
 
 1. Clone the USACO Guide repository.
 2. Run `yarn install`.
-3. Start the application using `yarn dev`.
+3. Run `yarn dev`.
 4. Open `http://localhost:3000`.
 5. Navigate to the Settings page.
 6. Locate the "Use Long Polling" option.
@@ -67,14 +67,19 @@ The setup completed successfully. Yarn displayed some peer dependency warnings, 
 
 ### Reproduction Evidence
 
-* **Working Branch:** https://github.com/alstondsouza1/usaco-guide/tree/investigate-firebase-long-polling-message
-* **Relevant File:** `src/components/Settings/General.tsx`
-* **Screenshots/logs:** Local development server running successfully.
-* **My Findings:** The settings page already contains the message:
+**Working Branch:**
+https://github.com/alstondsouza1/usaco-guide/tree/investigate-firebase-long-polling-message
+
+**Relevant File:**
+`src/components/Settings/General.tsx`
+
+**Finding:**
+
+The settings page already contains the message:
 
 > "Enable this option ONLY if you encounter issues connecting to Firebase (nothing loads)."
 
-This appears to match the maintainer's requested wording from the issue discussion.
+This matches the wording requested by the maintainers in the GitHub issue discussion.
 
 ---
 
@@ -82,63 +87,53 @@ This appears to match the maintainer's requested wording from the issue discussi
 
 ### Analysis
 
-After setting up the project locally and reviewing the settings page implementation, I found that the requested message already exists within the current codebase. The message is rendered in `src/components/Settings/General.tsx` alongside the "Use Long Polling" setting.
+After reviewing the issue discussion and examining the current implementation, I determined that the requested functionality had already been implemented in the codebase.
 
-Because the GitHub issue remains open despite the message being present, it is unclear whether the issue is already resolved or whether maintainers expect additional functionality.
+The message requested by the maintainers exists in:
+
+```text
+src/components/Settings/General.tsx
+```
 
 ### Proposed Solution
 
-Before making any code changes, I contacted the maintainers through the GitHub issue to clarify whether:
+No code changes were necessary.
 
-1. The issue should be considered resolved.
-2. Additional functionality is expected.
-3. A dynamic Firebase connection failure message should be implemented instead of the existing static message.
+Instead, I contacted the maintainers through the GitHub issue to confirm whether the issue was already resolved or if additional behavior was still expected.
+
+### Maintainer Response
+
+Maintainer **@bqi343** responded:
+
+> "yes I think it's fine now"
+
+The issue was subsequently closed by the maintainer as completed.
 
 ### Implementation Plan
 
-Using UMPIRE framework:
-
-**Understand:**
-The issue requests a message to help users experiencing Firebase connection problems.
-
-**Match:**
-The existing implementation already contains a message attached to the long polling setting.
-
-**Plan:**
-
-1. Wait for maintainer clarification on issue #3573.
-2. Determine whether the existing implementation satisfies the issue requirements.
-3. If additional work is required, identify where Firebase connection failures are handled.
-4. Design and implement any requested improvements.
-5. Test changes locally before opening a pull request.
-
-**Implement:**
-Not started yet. Awaiting maintainer feedback.
-
-**Review:**
-Follow the project's contribution guidelines and coding standards before making any changes.
-
-**Evaluate:**
-Verify that users receive appropriate guidance when Firebase connection issues occur and confirm any requested behavior works as expected.
+1. Reproduce the issue locally.
+2. Locate the relevant implementation.
+3. Compare the implementation with the issue requirements.
+4. Request maintainer clarification.
+5. Document findings.
+6. Move to a new issue for an actual code contribution.
 
 ---
 
 ## Testing Strategy
 
-### Unit Tests
-
-* [ ] Verify settings page renders correctly.
-* [ ] Verify long polling setting is displayed.
-* [ ] Verify Firebase guidance message is displayed.
-
-### Integration Tests
-
-* [ ] Verify settings page loads successfully.
-* [ ] Verify long polling option can be toggled.
-
 ### Manual Testing
 
-Successfully verified the message appears on the settings page while running the project locally.
+Successfully verified:
+
+* Settings page loads correctly.
+* Long polling option is displayed.
+* Firebase guidance message is displayed.
+* Message matches the wording requested in the issue discussion.
+
+### Result
+
+Issue requirements appear to already be satisfied in the current codebase.
 
 ---
 
@@ -146,7 +141,10 @@ Successfully verified the message appears on the settings page while running the
 
 ### Week 1 Progress
 
-Completed Phase I setup activities. Created the Contribution README repository, selected issue #3573, reviewed the issue discussion, and chose the issue because it aligns with my web development experience and learning goals.
+* Completed Phase I setup activities.
+* Selected issue #3573.
+* Created contribution repository.
+* Reviewed issue discussion.
 
 ### Week 2 Progress
 
@@ -155,38 +153,36 @@ Successfully:
 * Forked the USACO Guide repository.
 * Installed dependencies using Yarn.
 * Ran the project locally.
-* Located the relevant settings page component.
-* Investigated the existing implementation.
-* Confirmed the requested Firebase guidance message already exists.
-* Posted a follow-up question on the GitHub issue requesting clarification from maintainers.
+* Investigated the settings page implementation.
+* Located the existing Firebase guidance message.
+* Confirmed the message matched the requested wording.
+* Contacted project maintainers for clarification.
+* Received confirmation that the issue was already resolved.
+* Observed the maintainer close the issue.
 
 ### Code Changes
 
-**Files modified:** None yet
+**Files modified:** None
 
-**Key Branch:**
+**Branch Created:**
 
 * investigate-firebase-long-polling-message
 
-**Approach Decisions:**
+### Outcome
 
-* Investigated the current implementation before making changes.
-* Chose to request maintainer clarification before modifying working functionality.
-* Documented findings thoroughly for future reference.
+No code contribution was required because the issue had already been implemented and verified by the maintainer.
 
 ---
 
 ## Pull Request
 
-**PR Link:** TBD
+**PR Link:** N/A
 
-**PR Description:** TBD
+**Status:** No pull request required.
 
-**Maintainer Feedback:**
+**Reason:**
 
-* Awaiting response regarding issue status and expected behavior.
-
-**Status:** Awaiting maintainer clarification
+The issue was confirmed by the maintainer as already resolved and was closed after my investigation.
 
 ---
 
@@ -194,17 +190,22 @@ Successfully:
 
 ### Technical Skills Gained
 
-* Improved familiarity with open source contribution workflows.
-* Learned how to set up and run a large React/Next.js codebase locally.
-* Practiced navigating unfamiliar codebases and tracing issue discussions to source code.
+* Set up and ran a large Next.js and TypeScript project locally.
+* Navigated an unfamiliar open source codebase.
+* Traced issue discussions to source code implementations.
+* Practiced communicating findings with maintainers.
 
 ### Challenges Overcome
 
-The biggest challenge was determining whether the issue still exists because the requested functionality appears to already be present in the codebase.
+The main challenge was determining whether the issue still existed because the requested functionality appeared to already be present.
 
 ### What I'd Do Differently Next Time
 
-I would verify whether the issue is already implemented earlier in the investigation process before assuming work remains to be completed.
+I would verify earlier whether an issue has already been implemented before assuming development work remains.
+
+### Key Lesson
+
+Before beginning implementation, always reproduce the issue and verify it still exists. Sometimes an issue remains open even though the requested functionality has already been added.
 
 ---
 
