@@ -3,7 +3,7 @@
 **Contribution Number:** 1
 **Student:** Alston Dsouza
 **Issue:** https://github.com/cpinitiative/usaco-guide/issues/3573
-**Status:** Phase I Complete
+**Status:** Phase II Complete
 
 ---
 
@@ -27,11 +27,14 @@ Users should receive clear guidance when Firebase connection issues occur and un
 
 ### Current Behavior
 
-The discussion indicates that existing messaging may not be clear enough for users experiencing Firebase connection issues. Although previous work was completed related to long polling, the issue remains open and requires further investigation.
+The issue discussion suggested that users needed a clearer message regarding Firebase connection issues and the long polling setting. However, after investigating the current codebase, I found that a message already exists on the settings page.
 
 ### Affected Components
 
-Likely the settings page, long polling option, and Firebase-related functionality. The exact files and components will be identified during Phase II.
+* Settings page
+* Long polling option
+* Firebase-related functionality
+* `src/components/Settings/General.tsx`
 
 ---
 
@@ -39,19 +42,39 @@ Likely the settings page, long polling option, and Firebase-related functionalit
 
 ### Environment Setup
 
-To be completed during Phase II.
+I cloned my fork of the USACO Guide repository and installed the project dependencies using Yarn.
+
+Commands used:
+
+```bash
+git clone https://github.com/alstondsouza1/usaco-guide.git
+cd usaco-guide
+yarn install
+yarn dev
+```
+
+The setup completed successfully. Yarn displayed some peer dependency warnings, but the development server launched correctly and the website was accessible locally.
 
 ### Steps to Reproduce
 
-1. Set up the USACO Guide project locally.
-2. Review the Firebase connection behavior.
-3. Investigate the settings page and long polling functionality.
+1. Clone the USACO Guide repository.
+2. Run `yarn install`.
+3. Start the application using `yarn dev`.
+4. Open `http://localhost:3000`.
+5. Navigate to the Settings page.
+6. Locate the "Use Long Polling" option.
+7. Review the message displayed next to the setting.
 
 ### Reproduction Evidence
 
-* **Commit showing reproduction:** TBD
-* **Screenshots/logs:** TBD
-* **My findings:** TBD
+* **Working Branch:** https://github.com/alstondsouza1/usaco-guide/tree/investigate-firebase-long-polling-message
+* **Relevant File:** `src/components/Settings/General.tsx`
+* **Screenshots/logs:** Local development server running successfully.
+* **My Findings:** The settings page already contains the message:
+
+> "Enable this option ONLY if you encounter issues connecting to Firebase (nothing loads)."
+
+This appears to match the maintainer's requested wording from the issue discussion.
 
 ---
 
@@ -59,32 +82,44 @@ To be completed during Phase II.
 
 ### Analysis
 
-To be completed during Phase II after reproducing the issue and reviewing the existing implementation.
+After setting up the project locally and reviewing the settings page implementation, I found that the requested message already exists within the current codebase. The message is rendered in `src/components/Settings/General.tsx` alongside the "Use Long Polling" setting.
+
+Because the GitHub issue remains open despite the message being present, it is unclear whether the issue is already resolved or whether maintainers expect additional functionality.
 
 ### Proposed Solution
 
-To be determined after understanding the current Firebase connection handling and settings page implementation.
+Before making any code changes, I contacted the maintainers through the GitHub issue to clarify whether:
+
+1. The issue should be considered resolved.
+2. Additional functionality is expected.
+3. A dynamic Firebase connection failure message should be implemented instead of the existing static message.
 
 ### Implementation Plan
 
-Using UMPIRE framework (adapted):
+Using UMPIRE framework:
 
-**Understand:** Review the issue discussion and understand the Firebase connection problem.
+**Understand:**
+The issue requests a message to help users experiencing Firebase connection problems.
 
-**Match:** Identify similar messaging patterns already used in the codebase.
+**Match:**
+The existing implementation already contains a message attached to the long polling setting.
 
 **Plan:**
 
-1. Identify the relevant settings page files.
-2. Review the current long polling message.
-3. Investigate Firebase connection handling.
-4. Determine what additional messaging is needed.
+1. Wait for maintainer clarification on issue #3573.
+2. Determine whether the existing implementation satisfies the issue requirements.
+3. If additional work is required, identify where Firebase connection failures are handled.
+4. Design and implement any requested improvements.
+5. Test changes locally before opening a pull request.
 
-**Implement:** TBD
+**Implement:**
+Not started yet. Awaiting maintainer feedback.
 
-**Review:** Ensure changes follow project contribution guidelines and coding standards.
+**Review:**
+Follow the project's contribution guidelines and coding standards before making any changes.
 
-**Evaluate:** Verify that users receive clearer guidance regarding Firebase connection issues.
+**Evaluate:**
+Verify that users receive appropriate guidance when Firebase connection issues occur and confirm any requested behavior works as expected.
 
 ---
 
@@ -92,18 +127,18 @@ Using UMPIRE framework (adapted):
 
 ### Unit Tests
 
-* [ ] TBD
-* [ ] TBD
-* [ ] TBD
+* [ ] Verify settings page renders correctly.
+* [ ] Verify long polling setting is displayed.
+* [ ] Verify Firebase guidance message is displayed.
 
 ### Integration Tests
 
-* [ ] TBD
-* [ ] TBD
+* [ ] Verify settings page loads successfully.
+* [ ] Verify long polling option can be toggled.
 
 ### Manual Testing
 
-To be completed after implementation.
+Successfully verified the message appears on the settings page while running the project locally.
 
 ---
 
@@ -113,11 +148,31 @@ To be completed after implementation.
 
 Completed Phase I setup activities. Created the Contribution README repository, selected issue #3573, reviewed the issue discussion, and chose the issue because it aligns with my web development experience and learning goals.
 
+### Week 2 Progress
+
+Successfully:
+
+* Forked the USACO Guide repository.
+* Installed dependencies using Yarn.
+* Ran the project locally.
+* Located the relevant settings page component.
+* Investigated the existing implementation.
+* Confirmed the requested Firebase guidance message already exists.
+* Posted a follow-up question on the GitHub issue requesting clarification from maintainers.
+
 ### Code Changes
 
-* **Files modified:** None yet
-* **Key commits:** None yet
-* **Approach decisions:** Chose a beginner-friendly frontend issue with a clear scope and active project.
+**Files modified:** None yet
+
+**Key Branch:**
+
+* investigate-firebase-long-polling-message
+
+**Approach Decisions:**
+
+* Investigated the current implementation before making changes.
+* Chose to request maintainer clarification before modifying working functionality.
+* Documented findings thoroughly for future reference.
 
 ---
 
@@ -129,9 +184,9 @@ Completed Phase I setup activities. Created the Contribution README repository, 
 
 **Maintainer Feedback:**
 
-* TBD
+* Awaiting response regarding issue status and expected behavior.
 
-**Status:** Not started
+**Status:** Awaiting maintainer clarification
 
 ---
 
@@ -139,15 +194,17 @@ Completed Phase I setup activities. Created the Contribution README repository, 
 
 ### Technical Skills Gained
 
-Learned how to identify and evaluate an open source issue using the CodePath issue selection process.
+* Improved familiarity with open source contribution workflows.
+* Learned how to set up and run a large React/Next.js codebase locally.
+* Practiced navigating unfamiliar codebases and tracing issue discussions to source code.
 
 ### Challenges Overcome
 
-The biggest challenge was understanding the open source workflow and distinguishing between the First Contributions practice repository and the actual AI301 contribution project.
+The biggest challenge was determining whether the issue still exists because the requested functionality appears to already be present in the codebase.
 
 ### What I'd Do Differently Next Time
 
-I would spend more time reviewing candidate issues before selecting one so I can compare project complexity and scope more efficiently.
+I would verify whether the issue is already implemented earlier in the investigation process before assuming work remains to be completed.
 
 ---
 
@@ -155,5 +212,8 @@ I would spend more time reviewing candidate issues before selecting one so I can
 
 * https://github.com/cpinitiative/usaco-guide/issues/3573
 * https://github.com/cpinitiative/usaco-guide
+* USACO Guide README
+* USACO Guide source code
 * CodePath AI301 Phase I Instructions
+* CodePath AI301 Phase II Instructions
 * First Contributions Tutorial
