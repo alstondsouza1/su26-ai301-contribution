@@ -3,7 +3,7 @@
 **Contribution Number:** 1
 **Student:** Alston Dsouza
 **Issue:** https://github.com/cpinitiative/usaco-guide/issues/5159
-**Status:** Phase IV Complete
+**Status:** Phase IV Complete (Merged)
 
 ---
 
@@ -40,8 +40,6 @@ The page still recommended Ideone and repl.it.
 
 ### Environment Setup
 
-I cloned my fork of the USACO Guide repository and installed dependencies using Yarn.
-
 ```bash
 git clone https://github.com/alstondsouza1/usaco-guide.git
 cd usaco-guide
@@ -49,25 +47,20 @@ yarn install
 yarn dev
 ```
 
-The site ran successfully at:
-
-```text
-http://localhost:3000
-```
-
 ### Steps to Reproduce
 
 1. Run the USACO Guide project locally.
 2. Navigate to `/general/running-code-online`.
-3. Review the recommended online coding platforms.
-4. Observe that Ideone and repl.it are listed.
-5. Compare this behavior with issue #5159 requirements.
+3. Review the recommended platforms.
+4. Observe Ideone and repl.it listed on the page.
 
 ### Reproduction Evidence
 
-* **Commit showing reproduction:** https://github.com/alstondsouza1/usaco-guide/commit/e0a076a0d
-* **Screenshots/logs:** Verified locally through browser testing.
-* **My findings:** Ideone and repl.it were still listed even though maintainers indicated they should be removed.
+Commit:
+https://github.com/alstondsouza1/usaco-guide/commit/e0a076a0d
+
+Finding:
+Ideone and repl.it were still listed despite maintainer guidance that they should be removed.
 
 ---
 
@@ -75,62 +68,43 @@ http://localhost:3000
 
 ### Analysis
 
-The issue was content-related rather than a software bug. The recommendations were stored directly in the MDX file used to generate the Running Code Online page.
+The issue was documentation-related. The recommendations were stored directly inside the MDX file that generates the page.
 
 ### Proposed Solution
 
-Remove the Ideone and repl.it recommendations and update the warning text to be platform-agnostic.
+1. Remove Ideone.
+2. Remove repl.it.
+3. Update the warning text to be platform-agnostic.
 
 ### Implementation Plan
 
-Using UMPIRE framework (adapted):
+* Locate recommendation list.
+* Remove outdated platforms.
+* Verify documentation renders correctly.
+* Submit pull request.
 
-**Understand:** The page should only recommend contest-appropriate platforms.
+### Implement
 
-**Match:** Similar recommendation content was already stored in the same MDX file.
+Branch:
+https://github.com/alstondsouza1/usaco-guide/tree/update-running-code-online-recommendations
 
-**Plan:**
+PR:
+https://github.com/cpinitiative/usaco-guide/pull/6238
 
-1. Remove the Ideone section.
-2. Remove the repl.it section.
-3. Update the contest privacy warning.
-4. Verify the page renders correctly.
-5. Open a pull request.
+### Evaluate
 
-**Implement:**
-Branch: https://github.com/alstondsouza1/usaco-guide/tree/update-running-code-online-recommendations
-
-PR: https://github.com/cpinitiative/usaco-guide/pull/6238
-
-**Review:**
-Verified only the intended file was modified and followed repository contribution guidelines.
-
-**Evaluate:**
-Confirmed Ideone and repl.it no longer appear on the page and that the documentation renders correctly.
+Confirmed Ideone and repl.it no longer appear on the page.
 
 ---
 
 ## Testing Strategy
 
-### Unit Tests
-
-* [x] Verify documentation builds successfully.
-* [x] Verify modified MDX file renders correctly.
-* [x] Verify warning text displays correctly.
-
-### Integration Tests
-
-* [x] Load Running Code Online page locally.
-* [x] Confirm removed platforms no longer appear.
-
 ### Manual Testing
 
-Verified locally that:
-
-* Ideone no longer appears.
-* repl.it no longer appears.
-* Updated warning text appears correctly.
-* Page renders successfully.
+* Verified page builds locally.
+* Verified Ideone removed.
+* Verified repl.it removed.
+* Verified warning text renders correctly.
 
 ---
 
@@ -138,50 +112,50 @@ Verified locally that:
 
 ### Week 1 Progress
 
-* Selected issue #3573.
-* Set up contribution repository.
-* Forked USACO Guide.
-* Investigated the issue.
+* Selected issue.
+* Forked repository.
+* Set up development environment.
 
 ### Week 2 Progress
 
-* Determined issue #3573 was already resolved.
-* Maintainer confirmed the issue was complete and closed it.
-* Selected issue #5159.
-* Set up local environment.
-* Investigated affected file.
-* Implemented requested changes.
-* Opened pull request.
+* Located affected file.
+* Implemented changes.
+* Opened PR.
 
 ### Week 3 Progress
 
 * Passed automated checks.
 * Received maintainer review.
-* Pull request approved.
-* Pull request merged.
+* PR approved and merged.
 
 ### Code Changes
 
-* **Files modified:** content/1_General/Running_Code_Online.mdx
-* **Key commits:** e0a076a0d
-* **Approach decisions:** Kept the change focused to a single documentation file.
+Files Modified:
+
+```text
+content/1_General/Running_Code_Online.mdx
+```
+
+Commit:
+
+```text
+e0a076a0d
+```
 
 ---
 
 ## Pull Request
 
-**PR Link:** https://github.com/cpinitiative/usaco-guide/pull/6238
+PR:
+https://github.com/cpinitiative/usaco-guide/pull/6238
 
-**PR Description:**
+Status:
+Merged ✅
 
-Removed Ideone and repl.it from the Running Code Online recommendations and updated the contest privacy warning.
-
-**Maintainer Feedback:**
+Maintainer Feedback:
 
 * Approved by @bqi343
-* Pull request merged successfully
-
-**Status:** Merged
+* Merged into master
 
 ---
 
@@ -189,28 +163,193 @@ Removed Ideone and repl.it from the Running Code Online recommendations and upda
 
 ### Technical Skills Gained
 
-* Open-source contribution workflow
 * Git branching and pull requests
-* Repository navigation
-* MDX content editing
+* MDX documentation editing
+* Open source workflow
 * Maintainer communication
 
 ### Challenges Overcome
 
-My original issue (#3573) had already been implemented even though it remained open. I investigated the codebase, communicated with the maintainer, and successfully pivoted to another active issue.
-
-### What I'd Do Differently Next Time
-
-I would verify earlier whether an issue has already been implemented before investing significant time investigating it.
+My original issue (#3573) had already been implemented despite remaining open. I learned how to investigate issues before implementing changes and successfully pivoted to another contribution.
 
 ---
 
 ## Resources Used
 
-* https://github.com/cpinitiative/usaco-guide/issues/3573
-* https://github.com/cpinitiative/usaco-guide/issues/5159
-* https://github.com/cpinitiative/usaco-guide/pull/6238
-* https://github.com/cpinitiative/usaco-guide
+* Issue #3573
+* Issue #5159
+* PR #6238
 * USACO Guide source code
-* CodePath AI301 instructions
-* Claude Code
+* CodePath AI301 materials
+
+---
+
+# Contribution 2: Expand USACO FAQ
+
+**Contribution Number:** 2
+**Student:** Alston Dsouza
+**Issue:** https://github.com/cpinitiative/usaco-guide/issues/3384
+**Status:** Phase II In Progress
+
+---
+
+## Why I Chose This Issue
+
+After successfully completing my first merged contribution, I wanted to continue contributing to the USACO Guide repository.
+
+This issue focuses on improving documentation for new USACO contestants by expanding the FAQ page with commonly asked questions that are currently missing.
+
+---
+
+## Understanding the Issue
+
+### Problem Description
+
+The current FAQ page does not answer several common questions covered by other USACO resources.
+
+### Expected Behavior
+
+The FAQ should contain additional questions and answers that help new users navigate contests, submissions, analyses, and test data.
+
+### Current Behavior
+
+Several common beginner questions are not covered.
+
+### Affected Components
+
+Potentially:
+
+```text
+content/1_General/USACO_FAQ.mdx
+```
+
+---
+
+## Reproduction Process
+
+### Environment Setup
+
+Already completed during Contribution #1.
+
+### Steps to Reproduce
+
+1. Open the USACO FAQ page.
+2. Compare it with the external FAQ resources linked in issue #3384.
+3. Identify missing questions.
+
+### Reproduction Evidence
+
+Issue:
+https://github.com/cpinitiative/usaco-guide/issues/3384
+
+Comment:
+https://github.com/cpinitiative/usaco-guide/issues/3384
+
+Current findings:
+
+Potential additions:
+
+* How to submit solutions
+* Where to find contest analyses
+* Where to access test data
+* Common beginner questions
+
+---
+
+## Solution Approach
+
+### Analysis
+
+The issue is intentionally open-ended. The best approach is to propose a small number of useful FAQ additions before making larger changes.
+
+### Proposed Solution
+
+Add 3–5 new FAQ entries that address frequently asked beginner questions.
+
+### Implementation Plan
+
+**Understand**
+
+The FAQ is missing information commonly asked by new contestants.
+
+**Match**
+
+Existing FAQ entries provide the required structure and formatting.
+
+**Plan**
+
+1. Review current FAQ page.
+2. Review linked FAQ resources.
+3. Identify missing questions.
+4. Draft answers.
+5. Update FAQ page.
+6. Test formatting.
+7. Open PR.
+
+**Implement**
+
+Waiting for maintainer response.
+
+**Evaluate**
+
+Verify new questions render correctly and provide useful information.
+
+---
+
+## Testing Strategy
+
+### Manual Testing
+
+* [ ] Review FAQ page
+* [ ] Verify formatting
+* [ ] Verify links
+* [ ] Verify answers are accurate
+
+---
+
+## Implementation Notes
+
+### Current Progress
+
+* Claimed issue #3384
+* Commented on issue
+* Requested maintainer guidance
+* Began researching FAQ additions
+
+### Current Status
+
+Waiting for maintainer feedback before implementation.
+
+### Branch
+
+TBD
+
+---
+
+## Pull Request
+
+PR Link:
+TBD
+
+Status:
+Not Opened
+
+---
+
+## Learnings & Reflections
+
+### Goals
+
+* Improve documentation quality
+* Learn documentation contribution workflow
+* Complete a second contribution cycle
+
+---
+
+## Resources Used
+
+* https://github.com/cpinitiative/usaco-guide/issues/3384
+* https://blog.ktbyte.com/usaco-faq/
+* https://alphastar.academy/usaco-info-and-preparation/
+* https://ascendelearning.com/usaco-faq/
+* https://www.stemivy.com/faq.html
