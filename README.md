@@ -57,9 +57,11 @@ yarn dev
 ### Reproduction Evidence
 
 Commit:
+
 https://github.com/alstondsouza1/usaco-guide/commit/e0a076a0d
 
 Finding:
+
 Ideone and repl.it were still listed despite maintainer guidance that they should be removed.
 
 ---
@@ -86,9 +88,11 @@ The issue was documentation-related. The recommendations were stored directly in
 ### Implement
 
 Branch:
+
 https://github.com/alstondsouza1/usaco-guide/tree/update-running-code-online-recommendations
 
 PR:
+
 https://github.com/cpinitiative/usaco-guide/pull/6238
 
 ### Evaluate
@@ -147,9 +151,11 @@ e0a076a0d
 ## Pull Request
 
 PR:
+
 https://github.com/cpinitiative/usaco-guide/pull/6238
 
 Status:
+
 Merged ✅
 
 Maintainer Feedback:
@@ -172,6 +178,10 @@ Maintainer Feedback:
 
 My original issue (#3573) had already been implemented despite remaining open. I learned how to investigate issues before implementing changes and successfully pivoted to another contribution.
 
+### What I'd Do Differently Next Time
+
+I would verify earlier whether an issue had already been implemented before investing significant time investigating it.
+
 ---
 
 ## Resources Used
@@ -189,7 +199,7 @@ My original issue (#3573) had already been implemented despite remaining open. I
 **Contribution Number:** 2
 **Student:** Alston Dsouza
 **Issue:** https://github.com/cpinitiative/usaco-guide/issues/3384
-**Status:** Phase II In Progress
+**Status:** Phase IV Complete (Merged)
 
 ---
 
@@ -197,7 +207,9 @@ My original issue (#3573) had already been implemented despite remaining open. I
 
 After successfully completing my first merged contribution, I wanted to continue contributing to the USACO Guide repository.
 
-This issue focuses on improving documentation for new USACO contestants by expanding the FAQ page with commonly asked questions that are currently missing.
+This issue focused on improving documentation for new USACO contestants by expanding the FAQ page with commonly asked questions that were not currently covered.
+
+I also wanted additional experience working through the full open-source contribution cycle, including receiving maintainer feedback, revising my work, and getting a pull request merged.
 
 ---
 
@@ -205,22 +217,22 @@ This issue focuses on improving documentation for new USACO contestants by expan
 
 ### Problem Description
 
-The current FAQ page does not answer several common questions covered by other USACO resources.
+The USACO FAQ page did not answer several common questions that appeared in other USACO-related FAQ resources.
+
+Issue #3384 specifically mentioned expanding the FAQ to address questions commonly asked by new contestants.
 
 ### Expected Behavior
 
-The FAQ should contain additional questions and answers that help new users navigate contests, submissions, analyses, and test data.
+The FAQ should include useful information that helps users understand USACO processes and navigate contest-related information.
 
 ### Current Behavior
 
-Several common beginner questions are not covered.
+Some commonly asked beginner questions were not answered on the existing FAQ page.
 
 ### Affected Components
 
-Potentially:
-
 ```text
-content/1_General/USACO_FAQ.mdx
+content/1_General/USACO_FAQs.mdx
 ```
 
 ---
@@ -229,30 +241,27 @@ content/1_General/USACO_FAQ.mdx
 
 ### Environment Setup
 
-Already completed during Contribution #1.
+```bash
+git clone https://github.com/alstondsouza1/usaco-guide.git
+cd usaco-guide
+yarn install
+yarn dev
+```
 
 ### Steps to Reproduce
 
 1. Open the USACO FAQ page.
-2. Compare it with the external FAQ resources linked in issue #3384.
-3. Identify missing questions.
+2. Review the questions currently listed.
+3. Compare the page with external FAQ resources referenced in issue #3384.
+4. Identify common questions not currently addressed.
 
 ### Reproduction Evidence
 
 Issue:
+
 https://github.com/cpinitiative/usaco-guide/issues/3384
 
-Comment:
-https://github.com/cpinitiative/usaco-guide/issues/3384
-
-Current findings:
-
-Potential additions:
-
-* How to submit solutions
-* Where to find contest analyses
-* Where to access test data
-* Common beginner questions
+The issue discussion identified opportunities to expand the FAQ with additional beginner-focused information.
 
 ---
 
@@ -260,39 +269,39 @@ Potential additions:
 
 ### Analysis
 
-The issue is intentionally open-ended. The best approach is to propose a small number of useful FAQ additions before making larger changes.
+The issue was intentionally open-ended and required contributors to identify useful FAQ additions while avoiding duplication of existing content.
 
 ### Proposed Solution
 
-Add 3–5 new FAQ entries that address frequently asked beginner questions.
+Add a new FAQ entry explaining where users can view their contest history, scores, current division, and promotion information.
 
 ### Implementation Plan
 
-**Understand**
-
-The FAQ is missing information commonly asked by new contestants.
-
-**Match**
-
-Existing FAQ entries provide the required structure and formatting.
-
-**Plan**
-
-1. Review current FAQ page.
+1. Review the current FAQ page.
 2. Review linked FAQ resources.
-3. Identify missing questions.
-4. Draft answers.
-5. Update FAQ page.
-6. Test formatting.
-7. Open PR.
+3. Identify missing beginner questions.
+4. Draft a new FAQ entry.
+5. Verify formatting and rendering.
+6. Submit a pull request.
+7. Address maintainer feedback.
 
-**Implement**
+### Implement
 
-Waiting for maintainer response.
+Branch:
 
-**Evaluate**
+```text
+expand-usaco-faq
+```
 
-Verify new questions render correctly and provide useful information.
+PR:
+
+https://github.com/cpinitiative/usaco-guide/pull/6246
+
+### Evaluate
+
+Verified the new FAQ entry rendered correctly and integrated with the existing FAQ structure.
+
+Maintainer feedback was addressed through multiple revisions before merge.
 
 ---
 
@@ -300,56 +309,101 @@ Verify new questions render correctly and provide useful information.
 
 ### Manual Testing
 
-* [ ] Review FAQ page
-* [ ] Verify formatting
-* [ ] Verify links
-* [ ] Verify answers are accurate
+* Verified FAQ page builds successfully.
+* Verified new FAQ entry appears correctly.
+* Verified formatting renders correctly.
+* Ran formatting checks on the modified MDX file.
+* Confirmed no unrelated files were modified.
 
 ---
 
 ## Implementation Notes
 
-### Current Progress
+### Week 3 Progress
 
-* Claimed issue #3384
-* Commented on issue
-* Requested maintainer guidance
-* Began researching FAQ additions
+* Claimed issue #3384.
+* Reviewed existing FAQ content.
+* Researched related FAQ resources.
+* Drafted additional FAQ content.
+* Opened pull request.
 
-### Current Status
+### Week 4 Progress
 
-Waiting for maintainer feedback before implementation.
+* Received community feedback regarding rankings visibility.
+* Updated FAQ wording.
+* Received maintainer review.
+* Removed duplicate FAQ entries that overlapped with existing content.
+* Refined wording based on maintainer suggestions.
+* Pull request approved and merged.
 
-### Branch
+### Code Changes
 
-TBD
+Files Modified:
+
+```text
+content/1_General/USACO_FAQs.mdx
+```
+
+Commits:
+
+```text
+4cb1ef5
+0088503
+374703e
+0205f96
+```
 
 ---
 
 ## Pull Request
 
-PR Link:
-TBD
+PR:
+
+https://github.com/cpinitiative/usaco-guide/pull/6246
 
 Status:
-Not Opened
+
+Merged ✅
+
+Maintainer Feedback:
+
+* Community feedback suggested clarifying rankings availability.
+* Maintainer identified duplicate FAQ entries.
+* Duplicate questions were removed.
+* Wording was refined based on maintainer suggestions.
+* Final version approved and merged by @bqi343.
 
 ---
 
 ## Learnings & Reflections
 
-### Goals
+### Technical Skills Gained
 
-* Improve documentation quality
-* Learn documentation contribution workflow
-* Complete a second contribution cycle
+* Documentation contributions using MDX
+* Git branching and pull request workflow
+* Responding to code review feedback
+* Iterating on contributions based on maintainer suggestions
+* Open-source collaboration
+
+### Challenges Overcome
+
+My initial proposal included multiple FAQ additions. During review, the maintainer pointed out that some questions duplicated information already available elsewhere in the FAQ.
+
+I revised the contribution, removed duplicate content, refined the wording, and successfully worked through the review process until the pull request was approved and merged.
+
+### What I'd Do Differently Next Time
+
+I would spend more time reviewing existing documentation before proposing additions to reduce the likelihood of overlapping content.
 
 ---
 
 ## Resources Used
 
-* https://github.com/cpinitiative/usaco-guide/issues/3384
+* Issue #3384
+* PR #6246
+* USACO Guide source code
 * https://blog.ktbyte.com/usaco-faq/
 * https://alphastar.academy/usaco-info-and-preparation/
 * https://ascendelearning.com/usaco-faq/
 * https://www.stemivy.com/faq.html
+* CodePath AI301 materials
