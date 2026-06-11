@@ -407,3 +407,203 @@ I would spend more time reviewing existing documentation before proposing additi
 * https://ascendelearning.com/usaco-faq/
 * https://www.stemivy.com/faq.html
 * CodePath AI301 materials
+
+---
+
+# Contribution 3: Improving Documentation Structure
+
+**Contribution Number:** 3
+**Student:** Alston Dsouza
+**Issue:** https://github.com/apache/hamilton/issues/1043
+**Status:** Phase I Complete
+
+---
+
+## Why I Chose This Issue
+
+After successfully completing two merged open-source contributions in the USACO Guide repository, I wanted to continue building my experience with documentation-focused contributions in a larger project.
+
+I chose this issue because it focuses on improving the structure and organization of documentation, which aligns with the skills I developed during my previous contributions. The issue is also labeled as a good first issue and provides several possible improvements, making it a suitable next contribution.
+
+I am interested in learning how larger projects organize their documentation, navigation systems, and contributor-facing resources.
+
+---
+
+## Understanding the Issue
+
+### Problem Description
+
+As Hamilton has grown, portions of the documentation have become more difficult to navigate. The maintainers identified several areas where the documentation structure could be improved.
+
+Examples mentioned in the issue include:
+
+* Reorganizing the Integrations section into clearer categories.
+* Adding plugin-related content to the API reference.
+* Separating lifecycle APIs from lifecycle adapter implementations.
+
+### Expected Behavior
+
+The documentation should be organized in a way that makes it easier for users to discover relevant information and understand the relationship between different documentation sections.
+
+### Current Behavior
+
+Some documentation categories currently combine different concepts together, making navigation less intuitive for users.
+
+### Affected Components
+
+Potentially:
+
+```text
+docs/
+documentation navigation
+integrations documentation
+plugin documentation
+API reference documentation
+lifecycle adapter documentation
+```
+
+---
+
+## Reproduction Process
+
+### Environment Setup
+
+To be completed during Phase II.
+
+### Steps to Reproduce
+
+1. Review the Hamilton documentation structure.
+2. Examine the Integrations section.
+3. Review the API reference organization.
+4. Review lifecycle adapter documentation.
+5. Compare the current structure with the recommendations listed in issue #1043.
+
+### Reproduction Evidence
+
+Issue:
+
+https://github.com/apache/hamilton/issues/1043
+
+Current Finding:
+
+The issue identifies several documentation areas that could be reorganized to improve navigation and clarity.
+
+---
+
+## Solution Approach
+
+### Analysis
+
+This is a documentation-structure issue rather than a code bug. The primary challenge is understanding the current documentation architecture and implementing a focused improvement without introducing unnecessary complexity.
+
+### Proposed Solution
+
+Begin by reviewing the documentation organization and selecting one scoped improvement from the issue description.
+
+A likely starting point is evaluating whether the Integrations section should be separated into:
+
+* Plugins
+* Cookbook examples
+
+### Implementation Plan
+
+1. Fork the Hamilton repository.
+2. Review documentation setup instructions.
+3. Identify relevant documentation files.
+4. Determine which subtask is most appropriate for a first contribution.
+5. Implement a focused documentation improvement.
+6. Verify documentation renders correctly.
+7. Submit a pull request.
+
+### Implement
+
+Branch:
+
+```text
+TBD
+```
+
+PR:
+
+```text
+TBD
+```
+
+### Evaluate
+
+Verify that:
+
+* Documentation structure is improved.
+* Navigation remains functional.
+* Documentation builds successfully.
+* No unrelated content is modified.
+
+---
+
+## Testing Strategy
+
+### Manual Testing
+
+* [ ] Review documentation structure.
+* [ ] Verify navigation after changes.
+* [ ] Verify links remain functional.
+* [ ] Verify documentation builds successfully.
+
+---
+
+## Implementation Notes
+
+### Current Progress
+
+* Selected issue #1043.
+* Reviewed issue requirements.
+* Commented on the issue expressing interest.
+* Added the issue to my contribution tracker.
+* Preparing for Phase II investigation and reproduction.
+
+### Current Status
+
+Phase I Complete.
+
+Waiting to begin repository setup and documentation analysis.
+
+### Branch
+
+```text
+TBD
+```
+
+---
+
+## Pull Request
+
+PR Link:
+
+```text
+TBD
+```
+
+Status:
+
+```text
+Not Opened
+```
+
+---
+
+## Learnings & Reflections
+
+### Goals
+
+* Learn documentation organization in a larger open-source project.
+* Improve navigation and contributor experience.
+* Continue practicing maintainer communication and pull request workflows.
+* Complete a third open-source contribution cycle.
+
+---
+
+## Resources Used
+
+* https://github.com/apache/hamilton/issues/1043
+* https://github.com/apache/hamilton
+* CodePath AI301 materials
