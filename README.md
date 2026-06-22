@@ -31,7 +31,7 @@ The page still recommended Ideone and repl.it.
 
 ### Affected Components
 
-* content/1_General/Running_Code_Online.mdx
+* `content/1_General/Running_Code_Online.mdx`
 * Running Code Online documentation page
 
 ---
@@ -156,7 +156,7 @@ https://github.com/cpinitiative/usaco-guide/pull/6238
 
 Status:
 
-Merged ✅
+Merged
 
 Maintainer Feedback:
 
@@ -363,7 +363,7 @@ https://github.com/cpinitiative/usaco-guide/pull/6246
 
 Status:
 
-Merged ✅
+Merged
 
 Maintainer Feedback:
 
@@ -415,17 +415,15 @@ I would spend more time reviewing existing documentation before proposing additi
 **Contribution Number:** 3
 **Student:** Alston Dsouza
 **Issue:** https://github.com/apache/hamilton/issues/1043
-**Status:** Phase I Complete
+**Status:** Phase IV In Progress
 
 ---
 
 ## Why I Chose This Issue
 
-After successfully completing two merged open-source contributions in the USACO Guide repository, I wanted to continue building my experience with documentation-focused contributions in a larger project.
+After completing two merged contributions to the USACO Guide repository, I wanted to contribute to a larger open-source project and continue improving my documentation contribution skills.
 
-I chose this issue because it focuses on improving the structure and organization of documentation, which aligns with the skills I developed during my previous contributions. The issue is also labeled as a good first issue and provides several possible improvements, making it a suitable next contribution.
-
-I am interested in learning how larger projects organize their documentation, navigation systems, and contributor-facing resources.
+I chose this issue because it focuses on documentation structure and navigation. It matches my recent experience working with documentation pages, Markdown/MDX-style files, Git branches, pull requests, and maintainer feedback. I also wanted to learn how a larger Apache project organizes documentation, API reference pages, and contributor-facing resources.
 
 ---
 
@@ -433,33 +431,38 @@ I am interested in learning how larger projects organize their documentation, na
 
 ### Problem Description
 
-As Hamilton has grown, portions of the documentation have become more difficult to navigate. The maintainers identified several areas where the documentation structure could be improved.
+As Apache Hamilton has grown, parts of its documentation have become harder to navigate because different types of content are grouped together.
 
-Examples mentioned in the issue include:
+Issue #1043 identifies several documentation-structure improvements:
 
-* Reorganizing the Integrations section into clearer categories.
-* Adding plugin-related content to the API reference.
-* Separating lifecycle APIs from lifecycle adapter implementations.
+1. The Integrations section mixes plugin guides with application examples.
+2. The API reference does not have a dedicated plugin section.
+3. The Lifecycle Adapters section mixes lifecycle API interfaces with concrete adapter implementations.
 
 ### Expected Behavior
 
-The documentation should be organized in a way that makes it easier for users to discover relevant information and understand the relationship between different documentation sections.
+The documentation should clearly separate different types of content so users can more easily find what they need.
+
+Plugin guides, cookbook examples, lifecycle API interfaces, and concrete adapter implementations should be organized into clearer sections.
 
 ### Current Behavior
 
-Some documentation categories currently combine different concepts together, making navigation less intuitive for users.
+Before my changes:
+
+* `docs/integrations/` contained both plugin guides and application examples.
+* FastAPI and Streamlit appeared alongside dlt, Ibis, and dbt.
+* `docs/reference/lifecycle-hooks/` contained both lifecycle interfaces and concrete adapter implementations.
+* The API reference did not contain a separate plugin reference section.
 
 ### Affected Components
 
-Potentially:
-
 ```text
-docs/
-documentation navigation
-integrations documentation
-plugin documentation
-API reference documentation
-lifecycle adapter documentation
+docs/index.md
+docs/integrations/
+docs/reference/lifecycle-hooks/
+docs/ecosystem/index.md
+docs/code-comparisons/
+examples/
 ```
 
 ---
@@ -468,25 +471,39 @@ lifecycle adapter documentation
 
 ### Environment Setup
 
-To be completed during Phase II.
+I forked the Apache Hamilton repository and cloned my fork locally.
+
+```bash
+git clone https://github.com/alstondsouza1/hamilton.git
+cd hamilton
+git remote add upstream https://github.com/apache/hamilton.git
+git fetch upstream
+git switch -c docs-1043-structure
+```
+
+I reviewed the documentation setup instructions and attempted to install the documentation dependencies.
+
+```bash
+python -m pip install --group docs
+```
+
+One challenge was that my local Python version was Python 3.9.6, while Apache Hamilton requires Python 3.10.1 or newer. I also attempted to use a Python 3.11 Docker container, but Docker was not running locally.
 
 ### Steps to Reproduce
 
-1. Review the Hamilton documentation structure.
-2. Examine the Integrations section.
-3. Review the API reference organization.
-4. Review lifecycle adapter documentation.
-5. Compare the current structure with the recommendations listed in issue #1043.
+1. Open `docs/index.md`.
+2. Review the main documentation navigation.
+3. Open `docs/integrations/index.rst`.
+4. Observe that plugin guides and application examples are grouped together.
+5. Open `docs/reference/lifecycle-hooks/index.rst`.
+6. Observe that lifecycle API interfaces and concrete adapter implementations are listed together.
+7. Search the repository for links pointing to the affected documentation paths.
 
 ### Reproduction Evidence
 
-Issue:
-
-https://github.com/apache/hamilton/issues/1043
-
-Current Finding:
-
-The issue identifies several documentation areas that could be reorganized to improve navigation and clarity.
+* **Commit showing reproduction:** https://github.com/alstondsouza1/hamilton/tree/docs-1043-structure
+* **Screenshots/logs:** Not applicable; this is a documentation-structure issue.
+* **My findings:** The documentation structure matched the issue description. Plugin guides, cookbook-style examples, lifecycle APIs, and adapter implementations were not clearly separated.
 
 ---
 
@@ -494,116 +511,165 @@ The issue identifies several documentation areas that could be reorganized to im
 
 ### Analysis
 
-This is a documentation-structure issue rather than a code bug. The primary challenge is understanding the current documentation architecture and implementing a focused improvement without introducing unnecessary complexity.
+This was a documentation-structure issue rather than a code bug. The root problem was that documentation sections had grown over time and different types of content were grouped together.
+
+The main risk was that moving documentation files could break navigation, toctree entries, ecosystem links, comparison pages, or example README links. Because of this, I needed to update both the documentation structure and any references to the old paths.
 
 ### Proposed Solution
 
-Begin by reviewing the documentation organization and selecting one scoped improvement from the issue description.
+I reorganized the documentation into clearer sections:
 
-A likely starting point is evaluating whether the Integrations section should be separated into:
+```text
+docs/plugins/
+docs/cookbook/
+docs/reference/lifecycle-hooks/
+docs/reference/plugins/
+```
 
-* Plugins
-* Cookbook examples
+The goal was to separate:
+
+* Plugin guides from cookbook examples.
+* Lifecycle API interfaces from concrete plugin/adapter implementations.
+* User-facing guides from API reference pages.
 
 ### Implementation Plan
 
-1. Fork the Hamilton repository.
-2. Review documentation setup instructions.
-3. Identify relevant documentation files.
-4. Determine which subtask is most appropriate for a first contribution.
-5. Implement a focused documentation improvement.
-6. Verify documentation renders correctly.
-7. Submit a pull request.
+Using UMPIRE framework:
 
-### Implement
+**Understand:**
+The documentation needs clearer structure because plugin guides, cookbook examples, lifecycle APIs, and concrete adapter implementations are currently grouped together.
 
-Branch:
+**Match:**
+The repository already uses Sphinx, reStructuredText, Markdown, and toctree navigation. Similar documentation sections already use index files and structured navigation entries.
 
-```text
-TBD
-```
+**Plan:**
 
-PR:
+1. Create a feature branch.
+2. Split the Integrations section into Plugins and Cookbook.
+3. Move dlt, Ibis, and dbt documentation into `docs/plugins/`.
+4. Move FastAPI and Streamlit documentation into `docs/cookbook/`.
+5. Update `docs/index.md` navigation.
+6. Rename Lifecycle Adapters to Lifecycle API.
+7. Keep lifecycle interfaces in `docs/reference/lifecycle-hooks/`.
+8. Create `docs/reference/plugins/` for concrete adapter/plugin implementations.
+9. Update internal documentation links.
+10. Update affected example README links.
+11. Check for stale paths and missing documentation targets.
+12. Push the branch and open a pull request.
 
-```text
-TBD
-```
+**Implement:**
+Branch: https://github.com/alstondsouza1/hamilton/tree/docs-1043-structure
+Pull Request: https://github.com/apache/hamilton/pull/1647
 
-### Evaluate
+**Review:**
+I checked the changes for broken paths, stale references, conflict markers, whitespace issues, and unintended unrelated changes. I also organized the work into focused commits.
 
-Verify that:
-
-* Documentation structure is improved.
-* Navigation remains functional.
-* Documentation builds successfully.
-* No unrelated content is modified.
+**Evaluate:**
+The pull request is open and awaiting CI and maintainer review. I could not complete the full documentation build locally due to Python version and Docker limitations, but I documented this limitation and expect CI to run the full build.
 
 ---
 
 ## Testing Strategy
 
+### Unit Tests
+
+* [x] Verify documentation files were moved into the intended sections.
+* [x] Verify moved documentation pages still exist at their new paths.
+* [x] Verify Sphinx toctree targets exist.
+
+### Integration Tests
+
+* [x] Verify documentation navigation was updated.
+* [x] Verify internal documentation links were updated.
+* [x] Verify affected example README links were updated.
+
 ### Manual Testing
 
-* [ ] Review documentation structure.
-* [ ] Verify navigation after changes.
-* [ ] Verify links remain functional.
-* [ ] Verify documentation builds successfully.
+I completed the following manual checks:
+
+* Reviewed the documentation structure.
+* Separated Plugins and Cookbook.
+* Separated lifecycle interfaces and plugin adapters.
+* Added Plugin API Reference.
+* Updated documentation navigation.
+* Updated internal links.
+* Updated affected example links.
+* Checked for stale paths.
+* Verified documentation targets exist.
+* Verified the Git worktree was clean before pushing.
+* Pushed the feature branch to my fork.
+* Opened the pull request.
+
+The full documentation build is pending CI because my local environment did not meet the required Python version.
 
 ---
 
 ## Implementation Notes
 
-### Current Progress
+### Week 5 Progress
 
-* Selected issue #1043.
-* Reviewed issue requirements.
-* Commented on the issue expressing interest.
-* Added the issue to my contribution tracker.
-* Preparing for Phase II investigation and reproduction.
+I selected Apache Hamilton issue #1043, reviewed the issue requirements, commented on the issue expressing interest, and added the contribution to my README.
 
-### Current Status
+I also reviewed the existing documentation structure and chose a focused approach: splitting documentation into clearer Plugins, Cookbook, Lifecycle API, and Plugin API Reference sections.
 
-Phase I Complete.
+### Week 6 Progress
 
-Waiting to begin repository setup and documentation analysis.
+I implemented the documentation restructuring, updated navigation and links, pushed my feature branch, and opened pull request #1647.
 
-### Branch
+I also corrected my Git setup after initially working in a checkout where the Apache repository was configured as `origin`. I created my personal fork, configured `origin` and `upstream` correctly, preserved my feature branch, restored `main`, and pushed only my feature branch to my fork.
 
-```text
-TBD
-```
+### Code Changes
+
+* **Files modified:** Documentation files under `docs/`, `docs/integrations/`, `docs/plugins/`, `docs/cookbook/`, `docs/reference/lifecycle-hooks/`, `docs/reference/plugins/`, and affected example README files.
+* **Key commits:**
+
+  * `797c2c77` — split integrations into plugins and cookbook
+  * `5402ef19` — separate lifecycle api from plugin adapters
+  * `e5d80e64` — fix example links after moving the docs
+* **Approach decisions:** I chose to keep the work documentation-focused and split it into several commits so maintainers can review each part more easily.
 
 ---
 
 ## Pull Request
 
-PR Link:
+**PR Link:** https://github.com/apache/hamilton/pull/1647
 
-```text
-TBD
-```
+**PR Description:**
+This PR improves the Apache Hamilton documentation structure by separating plugin guides, cookbook examples, lifecycle APIs, and plugin API reference documentation into clearer sections. It also updates documentation navigation and affected internal links.
 
-Status:
+**Maintainer Feedback:**
 
-```text
-Not Opened
-```
+* Pending: Waiting for CI and maintainer review.
+
+**Status:** Awaiting review
 
 ---
 
 ## Learnings & Reflections
 
-### Goals
+### Technical Skills Gained
 
-* Learn documentation organization in a larger open-source project.
-* Improve navigation and contributor experience.
-* Continue practicing maintainer communication and pull request workflows.
-* Complete a third open-source contribution cycle.
+I gained experience working with Sphinx documentation, reStructuredText, Markdown, documentation navigation, API reference organization, Git remotes, forks, feature branches, and pull requests across repositories.
+
+### Challenges Overcome
+
+The main challenge was that moving documentation files required more than simply changing file locations. Navigation files, ecosystem pages, comparison pages, and example README files also referenced the old paths, so I had to search the repository and update related links.
+
+I also corrected my Git remote setup before opening the pull request so that my changes were pushed from my personal fork instead of the upstream Apache repository.
+
+### What I'd Do Differently Next Time
+
+Next time, I would fork and clone my personal fork before making any changes. I would also confirm the required Python version and documentation build dependencies before starting implementation so I can run the full documentation build earlier.
 
 ---
 
 ## Resources Used
 
 * https://github.com/apache/hamilton/issues/1043
+* https://github.com/apache/hamilton/pull/1647
+* https://github.com/apache/hamilton/pull/1199
 * https://github.com/apache/hamilton
+* https://github.com/alstondsouza1/hamilton
+* https://github.com/alstondsouza1/hamilton/tree/docs-1043-structure
+* `docs/README.md`
 * CodePath AI301 materials
