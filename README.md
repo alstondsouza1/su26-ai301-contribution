@@ -673,3 +673,229 @@ Next time, I would fork and clone my personal fork before making any changes. I 
 * https://github.com/alstondsouza1/hamilton/tree/docs-1043-structure
 * `docs/README.md`
 * CodePath AI301 materials
+
+---
+
+# Contribution 4: Make Download Name Column Wider
+
+**Contribution Number:** 4
+**Student:** Alston Dsouza
+**Issue:** https://github.com/homarr-labs/homarr/issues/4157
+**Status:** Phase III In Progress (Under Review)
+
+---
+
+## Why I Chose This Issue
+
+After working on documentation-focused contributions, I wanted to contribute to a frontend user interface issue that would have a direct impact on usability.
+
+I chose this issue because it involved React, TypeScript, responsive layouts, and user experience improvements. It also gave me the opportunity to work with maintainers, review previous solutions, and improve an existing implementation rather than simply making a small one-time fix.
+
+---
+
+## Understanding the Issue
+
+### Problem Description
+
+The Downloads Widget displayed job names in a column that was too narrow compared to the other columns.
+
+Long download names were often truncated, making them difficult to read, while smaller data columns such as status, size, and speed occupied a significant amount of space.
+
+### Expected Behavior
+
+The job name column should receive a larger share of available space so users can more easily read long download names.
+
+The solution should work well across different widget sizes.
+
+### Current Behavior
+
+The default layout allocated a relatively small width ratio to the name column, causing unnecessary truncation of long job names.
+
+### Affected Components
+
+* Downloads Widget
+* Table column sizing logic
+* Widget layout responsiveness
+
+---
+
+## Reproduction Process
+
+### Environment Setup
+
+```bash
+git clone https://github.com/alstondsouza1/homarr.git
+cd homarr
+pnpm install
+pnpm dev
+```
+
+### Steps to Reproduce
+
+1. Run the Homarr project locally.
+2. Open a dashboard containing the Downloads Widget.
+3. Add downloads with long file names.
+4. Observe that the job name column is narrow compared to other columns.
+5. Notice that long names are truncated despite available space elsewhere in the widget.
+
+### Reproduction Evidence
+
+Issue:
+
+https://github.com/homarr-labs/homarr/issues/4157
+
+The issue discussion included examples showing that the name column should occupy a larger portion of the available width.
+
+---
+
+## Solution Approach
+
+### Analysis
+
+I first reviewed the existing column sizing implementation and investigated previous work related to the same issue.
+
+I discovered that pull request #5713 had previously increased the name column width using fixed ratios. During review of my contribution, maintainers noted that this issue had reoccurred and suggested implementing a more adaptive solution.
+
+### Proposed Solution
+
+Instead of assigning a single fixed width ratio to the name column, use the widget width to dynamically determine how much space should be allocated.
+
+This approach allows:
+
+* Smaller widgets to maintain compact layouts.
+* Larger widgets to provide additional room for long download names.
+* More consistent behavior across dashboard configurations.
+
+### Implementation Plan
+
+1. Investigate existing sizing logic.
+2. Review previous implementation (#5713).
+3. Implement responsive sizing based on widget width.
+4. Verify behavior across different widget sizes.
+5. Submit a pull request.
+6. Address maintainer feedback.
+
+### Implement
+
+Branch:
+
+```text
+fix/downloads-name-column-width
+```
+
+PR:
+
+https://github.com/homarr-labs/homarr/pull/6122
+
+### Evaluate
+
+The initial implementation used a fixed ratio.
+
+Following maintainer review, I updated the implementation so the name column scales based on widget width instead of relying on a single hardcoded value.
+
+---
+
+## Testing Strategy
+
+### Manual Testing
+
+* Verified behavior on different widget widths.
+* Verified long download names receive additional space.
+* Verified no obvious layout regressions.
+* Reviewed responsive behavior after updates.
+
+### Verification Commands
+
+```bash
+git diff --check
+```
+
+Attempted:
+
+```bash
+pnpm turbo typecheck --filter=@homarr/widgets
+```
+
+Local verification was blocked because Corepack failed while verifying/downloading the required pnpm version.
+
+---
+
+## Implementation Notes
+
+### Week 6 Progress
+
+* Selected issue #4157.
+* Reviewed issue discussion and previous fixes.
+* Investigated existing Downloads Widget sizing logic.
+* Implemented initial solution.
+* Opened pull request #6122.
+
+### Week 7 Progress
+
+* Received maintainer feedback.
+* Updated implementation to use widget-width-based scaling.
+* Rebased branch on the latest development branch.
+* Awaiting maintainer review.
+
+### Code Changes
+
+Files Modified:
+
+```text
+Downloads Widget column sizing implementation
+```
+
+Commit:
+
+```text
+0b59671
+```
+
+---
+
+## Pull Request
+
+PR:
+
+https://github.com/homarr-labs/homarr/pull/6122
+
+Status:
+
+Under Review
+
+Maintainer Feedback:
+
+* Initial implementation was similar to a previous fix (#5713).
+* Maintainers suggested using widget width to determine sizing dynamically.
+* Updated implementation to follow review feedback.
+* Awaiting additional review.
+
+---
+
+## Learnings & Reflections
+
+### Technical Skills Gained
+
+* React component analysis
+* TypeScript development
+* Responsive UI design
+* Open-source collaboration
+* Responding to maintainer feedback
+
+### Challenges Overcome
+
+A previous pull request had already addressed the issue using a fixed width ratio. After receiving maintainer feedback, I revised the implementation and created a more flexible solution that adapts based on widget width.
+
+### What I'd Do Differently Next Time
+
+I would spend more time reviewing related historical pull requests before implementing my first solution so I can better understand previous design decisions.
+
+---
+
+## Resources Used
+
+* Issue #4157
+* PR #6122
+* PR #5713
+* Homarr source code
+* CodePath AI301 materials
