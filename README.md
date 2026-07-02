@@ -415,7 +415,7 @@ I would spend more time reviewing existing documentation before proposing additi
 **Contribution Number:** 3
 **Student:** Alston Dsouza
 **Issue:** https://github.com/apache/hamilton/issues/1043
-**Status:** Phase IV In Progress
+**Status:** Phase IV In Progress (Awaiting Review)
 
 ---
 
@@ -639,9 +639,9 @@ This PR improves the Apache Hamilton documentation structure by separating plugi
 
 **Maintainer Feedback:**
 
-* Pending: Waiting for CI and maintainer review.
+* Pending: Waiting for CI and maintainer review on PR #1647.
 
-**Status:** Awaiting review
+**Status:** Awaiting Review
 
 ---
 
@@ -681,7 +681,7 @@ Next time, I would fork and clone my personal fork before making any changes. I 
 **Contribution Number:** 4
 **Student:** Alston Dsouza
 **Issue:** https://github.com/homarr-labs/homarr/issues/4157
-**Status:** Phase III In Progress (Under Review)
+**Status:** Phase IV In Progress (Changes Requested Addressed / Awaiting Re-review)
 
 ---
 
@@ -713,9 +713,11 @@ The default layout allocated a relatively small width ratio to the name column, 
 
 ### Affected Components
 
-* Downloads Widget
-* Table column sizing logic
-* Widget layout responsiveness
+```text
+packages/widgets/src/downloads/component.tsx
+packages/widgets/src/common/table-column-sizing.ts
+packages/widgets/src/common/table-column-sizing.spec.ts
+```
 
 ---
 
@@ -760,20 +762,25 @@ I discovered that pull request #5713 had previously increased the name column wi
 
 Instead of assigning a single fixed width ratio to the name column, use the widget width to dynamically determine how much space should be allocated.
 
+The final approach extracts the sizing logic into a reusable helper so other table-based widgets can reuse the same pattern later.
+
 This approach allows:
 
 * Smaller widgets to maintain compact layouts.
 * Larger widgets to provide additional room for long download names.
 * More consistent behavior across dashboard configurations.
+* The name column to grow without shrinking any column below its baseline size.
 
 ### Implementation Plan
 
 1. Investigate existing sizing logic.
 2. Review previous implementation (#5713).
 3. Implement responsive sizing based on widget width.
-4. Verify behavior across different widget sizes.
-5. Submit a pull request.
-6. Address maintainer feedback.
+4. Extract reusable table column sizing logic.
+5. Add focused unit tests for sizing behavior.
+6. Verify behavior across different widget sizes.
+7. Submit a pull request.
+8. Address maintainer feedback.
 
 ### Implement
 
@@ -793,9 +800,26 @@ The initial implementation used a fixed ratio.
 
 Following maintainer review, I updated the implementation so the name column scales based on widget width instead of relying on a single hardcoded value.
 
+After additional review, I moved the responsive sizing behavior into `packages/widgets/src/common/table-column-sizing.ts` and added unit tests in `packages/widgets/src/common/table-column-sizing.spec.ts`.
+
 ---
 
 ## Testing Strategy
+
+### Unit Tests
+
+Added tests in:
+
+```text
+packages/widgets/src/common/table-column-sizing.spec.ts
+```
+
+The tests cover:
+
+* Narrow tables keeping their base column sizes.
+* Wider tables growing the configured `name` column.
+* `maxSize` capping column growth.
+* `maxSize` not shrinking a column below its base size.
 
 ### Manual Testing
 
@@ -814,9 +838,10 @@ Attempted:
 
 ```bash
 pnpm turbo typecheck --filter=@homarr/widgets
+pnpm vitest run packages/widgets/src/common/table-column-sizing.spec.ts
 ```
 
-Local verification was blocked because Corepack failed while verifying/downloading the required pnpm version.
+Local pnpm verification was blocked because Corepack failed before running Vitest/typecheck while verifying/downloading `pnpm 11.9.0`.
 
 ---
 
@@ -834,6 +859,9 @@ Local verification was blocked because Corepack failed while verifying/downloadi
 
 * Received maintainer feedback.
 * Updated implementation to use widget-width-based scaling.
+* Moved responsive column sizing into a reusable helper.
+* Fixed a CodeRabbit edge case around `maxSize` shrinking below the base size.
+* Added focused unit tests for the helper.
 * Rebased branch on the latest development branch.
 * Awaiting maintainer review.
 
@@ -842,14 +870,31 @@ Local verification was blocked because Corepack failed while verifying/downloadi
 Files Modified:
 
 ```text
-Downloads Widget column sizing implementation
+packages/widgets/src/downloads/component.tsx
+packages/widgets/src/common/table-column-sizing.ts
+packages/widgets/src/common/table-column-sizing.spec.ts
 ```
 
-Commit:
+Key Commits:
 
 ```text
-0b59671
+bc4e019d - make download name column wider
+a13fee3c - add table sizing tests
 ```
+
+Implementation details:
+
+* `packages/widgets/src/downloads/component.tsx`
+  * Added the `width` prop from `WidgetComponentProps`.
+  * Replaced fixed column sizing behavior with responsive sizing.
+  * Allows the `name` column to grow when the widget is wider.
+  * Keeps narrow widgets at the original baseline size.
+* `packages/widgets/src/common/table-column-sizing.ts`
+  * Added `getResponsiveTableColumnSizes`.
+  * Calculates responsive column sizes from base column sizes, current width, and optional responsive settings such as `maxSize`.
+  * Prevents columns from shrinking below their base size.
+* `packages/widgets/src/common/table-column-sizing.spec.ts`
+  * Added Vitest coverage for the new helper.
 
 ---
 
@@ -861,14 +906,16 @@ https://github.com/homarr-labs/homarr/pull/6122
 
 Status:
 
-Under Review
+Open / Changes Requested Addressed / Awaiting Re-review
 
 Maintainer Feedback:
 
-* Initial implementation was similar to a previous fix (#5713).
-* Maintainers suggested using widget width to determine sizing dynamically.
-* Updated implementation to follow review feedback.
-* Awaiting additional review.
+* June 29, 2026: A maintainer noted that the first version was similar to previous PR #5713 and suggested using widget width to determine sizing dynamically.
+* June 30, 2026: I updated the PR so the name column scales based on widget width and rebased on the latest `dev` branch.
+* June 30, 2026: Follow-up review suggested making the sizing logic reusable. I moved the logic into `packages/widgets/src/common/table-column-sizing.ts`.
+* June 30, 2026: CodeRabbit identified an edge case where `maxSize` could shrink a column below its base size. I fixed this so `maxSize` only caps growth.
+* July 1, 2026: I added focused unit tests for the responsive table column sizing helper in commit `a13fee3c`.
+* Current status: PR is open. GitHub still shows changes requested from the earlier review, but I pushed follow-up updates and tests after that review and am awaiting maintainer re-review/approval.
 
 ---
 
@@ -886,6 +933,8 @@ Maintainer Feedback:
 
 A previous pull request had already addressed the issue using a fixed width ratio. After receiving maintainer feedback, I revised the implementation and created a more flexible solution that adapts based on widget width.
 
+Another challenge was local verification. I added automated tests, but local pnpm commands were blocked by Corepack before Vitest/typecheck could start. I documented the exact commands attempted and left the PR ready for CI or maintainer-side verification.
+
 ### What I'd Do Differently Next Time
 
 I would spend more time reviewing related historical pull requests before implementing my first solution so I can better understand previous design decisions.
@@ -898,4 +947,7 @@ I would spend more time reviewing related historical pull requests before implem
 * PR #6122
 * PR #5713
 * Homarr source code
+* `packages/widgets/src/downloads/component.tsx`
+* `packages/widgets/src/common/table-column-sizing.ts`
+* `packages/widgets/src/common/table-column-sizing.spec.ts`
 * CodePath AI301 materials
